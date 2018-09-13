@@ -232,16 +232,7 @@ class main_Logger(AbstractEventhandlingThread):
             "Testcol2":20
         }
         #initializing a table with primary key as first column:
-        mycursor.execute("CREATE TABLE IF NOT EXISTS measured_data (id INT AUTO_INCREMENT PRIMARY KEY)")
-
-
-        #this should be turned off after the setup, but now handled with exception, it wants to overwirte existing columns but can't do so!
-        try:
-            sql="ALTER TABLE measured_data ADD ({} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4))" .format(*list(testdict.keys()))
-            mycursor.execute(sql)
-
-        except mysql.connector.errors.ProgrammingError as er:
-            print("Column name already exists don't worry (see line 43)")
+        mycursor.execute("CREATE TABLE IF NOT EXISTS measured_data (id INT AUTO_INCREMENT PRIMARY KEY,{} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4),{} FLOAT(7,4))".format(*list(testdict.keys())))
 
 
         #inserting in the measured values:
