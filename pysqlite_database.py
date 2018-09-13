@@ -2,7 +2,7 @@ import sys
 import os
 import sqlite3
 
-
+#hmm
 #does not support adding new key-value pairs in the dictionary, the number of columns must be manually set with "{}" in ALTER DATA, before logging the data/running!
 
 #creating db:
